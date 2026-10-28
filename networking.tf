@@ -47,6 +47,10 @@ resource "aws_route_table_association" "lab-rt-assoc" {
   route_table_id = aws_route_table.lab-rt.id
 }
 
+data "http" "my_ip" {
+  url = "https://checkip.amazonaws.com"
+}
+
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
   description = "Permite trafego na porta 22"
@@ -56,6 +60,8 @@ resource "aws_security_group" "allow_ssh" {
     from_port   = "22"
     to_port     = "22"
     protocol    = "tcp"
+    cidr_blocks = ["${chomp(data.http.my_ip.response_body)}/32"] # pegando o ip do usuario
+  }
     cidr_blocks = ["0.0.0.0/0"]
   }
 
