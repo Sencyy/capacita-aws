@@ -26,15 +26,6 @@ resource "aws_internet_gateway" "lab-gw" {
   }
 }
 
-resource "aws_network_interface" "lab-if" {
-  subnet_id       = aws_subnet.lab-subnet.id
-  security_groups = [aws_security_group.allow_ssh.id]
-
-  tags = {
-    Name = "lab-if"
-  }
-}
-
 resource "aws_route_table" "lab-rt" {
   vpc_id = aws_vpc.lab-vpc.id
 
