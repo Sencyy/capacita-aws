@@ -22,9 +22,9 @@ resource "aws_instance" "lab-vm" {
   #     network_interface_id = aws_network_interface.lab-if.id
   #   }
 
-  vpc_security_group_ids = [ aws_security_group.allow_ssh.id ]
-  subnet_id       = aws_subnet.lab-subnet.id
-  key_name        = "aws-key"
+  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+  subnet_id              = aws_subnet.lab-subnet.id
+  key_name               = "aws-key"
 
   tags = {
     Name = "lab-vm"
