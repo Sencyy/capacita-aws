@@ -51,6 +51,7 @@ data "http" "my_ip" {
   url = "https://checkip.amazonaws.com"
 }
 
+
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
   description = "Permite trafego na porta 22"
@@ -62,6 +63,11 @@ resource "aws_security_group" "allow_ssh" {
     protocol    = "tcp"
     cidr_blocks = ["${chomp(data.http.my_ip.response_body)}/32"] # pegando o ip do usuario
   }
+
+  egress {
+    from_port   = "0"
+    to_port     = "0"
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
