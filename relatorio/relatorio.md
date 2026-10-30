@@ -8,7 +8,7 @@ author: Matheus Rocha de Paula
 Criar um ambiente de testes na AWS com uma VPC, sub-rede pública, Internet Gateway, tabela de rotas, Security Group e uma instância EC2 acessível via SSH pela internet. O objetivo é demonstrar, na prática, como os recursos de rede e computação se conectam para expor um serviço.
 
 ## Diagrama da solução
-![Diagrama da implementação na AWS](./deagrama.png)
+![Diagrama da implementação na AWS](./diagrama.png)
 
 ## Recursos e os seus papéis
 
